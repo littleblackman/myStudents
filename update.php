@@ -4,7 +4,6 @@ $values = $_POST['values'];
 $values['id'] = 5;
 
 
-
 $bdd = new PDO("mysql:host=localhost;dbname=myStudents;charset=utf8mb4", "root", "root");
 
 $query = "INSERT INTO students SET first_name = :first_name, last_name = :last_name, card_id = :card_id    ";

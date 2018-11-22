@@ -11,11 +11,6 @@ echo $myStudent->getFullName();
 echo $myStudent->getCardId();
 
 
-
-
-
-
-
 exit;
 
 
