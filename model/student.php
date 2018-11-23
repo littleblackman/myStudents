@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Student
 {
 
@@ -10,26 +8,34 @@ class Student
     private $cardId;
     private $id;
 
-    public function __construct($datas)
+    /**
+     * Student constructor.
+     * @param $datas
+     */
+    public function __construct($datas = null)
     {
-        $this->cardId = rand(1,10000);
-
-        $this->hydrate($datas);
-
+        if($datas) $this->hydrate($datas);
     }
 
 
-    public function hydrate($datas)
+    public function hydrate($row)
     {
-        foreach($datas as $key => $value) // array( 'id' => 5)
+
+        foreach($row as $key => $value)
         {
-            $method = "set".ucfirst($key); // key = 'id'   // method = setId
-            if(method_exists($method)) {  // check if setId
-                $this->$method($value); // setId(5)
+            $elements = explode('_', $key);
+            $method = "set";
+            foreach($elements as $el)
+            {
+                $method .= ucfirst($el);
             }
+
+            if(method_exists($this, $method)) {
+                $this->$method($value);
+            }
+
         }
     }
-
 
 
     public function getId()
@@ -75,6 +81,11 @@ class Student
     public function getCardId()
     {
         return $this->cardId;
+    }
+
+    public function setCardId($cardId)
+    {
+        $this->cardId = $cardId;
     }
 
 
