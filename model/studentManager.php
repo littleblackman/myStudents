@@ -6,6 +6,14 @@ include_once(MODEL.'BddManager.php');
 class StudentManager extends BddManager
 {
 
+    CONST MAXSTUDENT = 20;
+
+
+    public static function countStudents()
+    {
+        return 35;
+    }
+
     public function findAll()
     {
         $bdd = $this->getBdd();
@@ -23,6 +31,16 @@ class StudentManager extends BddManager
         }
 
         return $students;
+    }
+
+    public function persist($student) {
+        $bdd = $this->getBdd();
+        $query = "INSERT INTO students SET first_name = :first_name, last_name = :last_name, card_id = :card_id ";
+        $req = $bdd->prepare($query);
+        $req->bindValue(':first_name', $student->getFirstName(), PDO::PARAM_STR);
+        $req->bindValue(':last_name', $student->getLastName(), PDO::PARAM_STR);
+        $req->bindValue(':card_id', $student->getCardId(), PDO::PARAM_INT);
+        $req->execute();
     }
 
 

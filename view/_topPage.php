@@ -14,10 +14,10 @@
     <nav class="uk-navbar uk-margin-large-bottom">
         <ul class="uk-navbar-nav uk-hidden-small">
             <li class="uk-active">
-                <a href="home.php">Liste des étudiants</a>
+                <a href="<?= HOST;?>index.php">Liste des étudiants</a>
             </li>
             <li>
-                <a href="add.php">Ajouter un étudiant</a>
+                <a href="<?= HOST;?>index.php?action=create">Ajouter un étudiant</a>
             </li>
 
         </ul>

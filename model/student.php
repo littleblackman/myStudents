@@ -88,6 +88,11 @@ class Student
         $this->cardId = $cardId;
     }
 
+    public function createCardId()
+    {
+      $this->setCardId(rand(1,1000));
+    }
+
 
 
 }

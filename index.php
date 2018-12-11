@@ -1,14 +1,12 @@
 <?php
-
 // configuration
 include_once('_config.php');
 
-if($_GET['action'] == 'home')
-{
-    include_once(CONTROLLER.'home.php');
-}
+// lance l'application
+ConfigApp::start();
 
-if($_GET['action'] == 'new')
-{
-    include_once(CONTROLLER.'new.php');
-}
+(isset($_GET['action'])) ? $action = $_GET['action'] : $action = "home" ;
+
+// lancer le routeur
+$routeur = new Routeur($action);
+$routeur->render();

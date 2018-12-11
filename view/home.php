@@ -10,6 +10,7 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Identifiant</th>
+                <th/>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +19,11 @@
                     <td><?= $student->getLastName();?></td>
                     <td><?= $student->getFirstName();?></td>
                     <td><?= $student->getCardId();?></td>
+                    <td>
+                      <a href="<?= HOST;?>index.php?action=edit&id=<?= $student->getId();?>">
+                          edit
+                      </a>
+                    </td>
                 </tr>
             <?php endforeach;?>
         </tbody>
